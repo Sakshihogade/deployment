@@ -39,4 +39,5 @@ def predict():
     res = ferti.classes_[model.predict([input])]
     return render_template('Model1.html', x=res)
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True) 
+    #chnages 
