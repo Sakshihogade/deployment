@@ -1,11 +1,14 @@
 from flask import Flask, request, render_template
 import pickle
 
+
 app = Flask(__name__)
 
 #importing pickle files
 model = pickle.load(open('classifier.pkl','rb'))
 ferti = pickle.load(open('fertilizer (1).pkl','rb'))
+
+
 
 @app.route('/')
 def home():
@@ -37,6 +40,7 @@ def predict():
 # Convert values to integers
     input = [int(temp), int(humi), int(mois), int(soil), int(crop), int(nitro), int(pota), int(phosp)]
     res = ferti.classes_[model.predict([input])]
+   
     return render_template('Model1.html', x=res)
 if __name__ == "__main__":
     app.run(debug=True) 
